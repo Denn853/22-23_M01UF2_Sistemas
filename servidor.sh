@@ -26,7 +26,7 @@ then
 	exit 1
 fi
 
-#echo "OK_TURIP" | nc $IP_CLIENT $PORT
+echo "OK_TURIP" | nc $IP_CLIENT $PORT
 
 
 echo "(4) LISTEN: FILE_NAME"
@@ -47,8 +47,12 @@ then
 	exit 2
 fi
 
-#echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
+echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
 
+
+echo "(8) LISTEN: Vaca Dates"
+
+nc -l $PORT > inbox/$FILE_NAME
 
 
 exit 0

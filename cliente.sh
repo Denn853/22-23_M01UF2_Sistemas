@@ -28,12 +28,26 @@ fi
 
 
 echo "(5) SEND: FILE_NAME"
-echo "FILE_NAME vaca.vaca" | nc $SERVER_ADDR $PORT
+
+FILE_NAME="vaca.vaca"
+
+echo "FILE_NAME $FILE_NAME" | nc $SERVER_ADDR $PORT
 
 
 echo "(6) LISTEN: FILE_NAME Comprobation"
-MSG=`nc -l $PORT
+MSG=`nc -l $PORT`
+
+if [ "$MSG" != "OK_FILE_NAME"  ]
+then
+	echo "ERROR 2: Incorrect File Name"
+	
+	exit 2
+fi
 
 
+echo "(9) SEND: Vaca Dates"
 
-exit 0`
+cat vacas/$FILE_NAME | nc $SERVER_ADDR $PORT
+
+
+exit 0
